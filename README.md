@@ -25,11 +25,11 @@
 | user              | references | null: false, foreign_key: true |
 | name              | string     | null: false                    |
 | introduction      | text       | null: false                    |
-| category          | references | null: false, foreign_key: true |
-| condition         | references | null: false, foreign_key: true |
-| shipping_payer    | references | null: false, foreign_key: true |
-| shipping_from     | references | null: false, foreign_key: true |
-| shipping_dates    | references | null: false, foreign_key: true |
+| category          | integer    | null: false                    |
+| condition         | integer    | null: false                    |
+| shipping_payer    | integer    | null: false                    |
+| shipping_from     | integer    | null: false                    |
+| shipping_dates    | integer    | null: false                    |
 | price             | integer    | null: false                    |
 
 ### Association
