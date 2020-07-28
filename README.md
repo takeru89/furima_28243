@@ -62,19 +62,6 @@ _ belongs_to :order
 - belongs_to :user
 - belongs_to :item
 
-## credit_cards テーブル
-
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| card_num         | integer | null: false |
-| expiration_month | integer | null: false |
-| expiration_year  | integer | null: false |
-| security_num     | integer | null: false |
-
-### Association
-
-- belongs_to :order
-
 ## addresses テーブル
 
 | Column        | Type       | Options                        |
