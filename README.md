@@ -21,20 +21,20 @@
 
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
-| user_id           | references | null: false, foreign_key: true |
-| item_name         | string     | null: false                    |
-| introduction      | string     | null: false                    |
-| category_id       | references | null: false, foreign_key: true |
-| condition_id      | references | null: false, foreign_key: true |
-| shipping_payer_id | references | null: false, foreign_key: true |
-| shipping_from_id  | references | null: false, foreign_key: true |
-| shipping_dates_id | references | null: false, foreign_key: true |
+| user              | references | null: false, foreign_key: true |
+| name              | string     | null: false                    |
+| introduction      | text       | null: false                    |
+| category          | references | null: false, foreign_key: true |
+| condition         | references | null: false, foreign_key: true |
+| shipping_payer    | references | null: false, foreign_key: true |
+| shipping_from     | references | null: false, foreign_key: true |
+| shipping_dates    | references | null: false, foreign_key: true |
 | price             | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
-- belongs_to :image
-- belongs_to :order
+- belongs_to :address
+- has_many   :images
 - has_many   :comments
 
 ## images テーブル
