@@ -16,6 +16,7 @@
 ### Association
 - has_many :items
 - has_many :comments
+- has_many :orders
 
 ## items テーブル
 
@@ -34,6 +35,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :address
+_ belongs_to :order
 - has_many   :images
 - has_many   :comments
 
@@ -50,20 +52,15 @@
 
 ## orders テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
-| credit_card_id | references | null: false, foreign_key: true |
-| address_id     | references | null: false, foreign_key: true |
-| item_price     | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
-- belongs_to :credit_card
 
 ## credit_cards テーブル
 
