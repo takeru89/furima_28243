@@ -34,8 +34,8 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :address
-_ belongs_to :order
+- has_one :address
+_ has_one :order
 - has_many   :images
 - has_many   :comments
 
