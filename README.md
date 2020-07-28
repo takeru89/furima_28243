@@ -11,14 +11,11 @@
 | first_name       | string     | null: false                    |
 | kana_family_name | string     | null: false                    |
 | kana_first_name  | string     | null: false                    |
-| birth_year_id    | references | null: false, foreign_key: true |
-| birth_month_id   | references | null: false, foreign_key: true |
-| birth_date_id    | references | null: false, foreign_key: true |
+| birthday         | date       | null: false, foreign_key: true |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :orders
 
 ## items テーブル
 
