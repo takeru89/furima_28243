@@ -11,9 +11,7 @@
 | first_name       | string     | null: false                    |
 | kana_family_name | string     | null: false                    |
 | kana_first_name  | string     | null: false                    |
-| birth_year_id    | references | null: false, foreign_key: true |
-| birth_month_id   | references | null: false, foreign_key: true |
-| birth_date_id    | references | null: false, foreign_key: true |
+| birthday         | date       | null: false,foreign_key :true  |
 
 ### Association
 - has_many :items
@@ -24,77 +22,48 @@
 
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
-| user_id           | references | null: false, foreign_key: true |
-| item_name         | string     | null: false                    |
-| introduction      | string     | null: false                    |
-| category_id       | references | null: false, foreign_key: true |
-| condition_id      | references | null: false, foreign_key: true |
-| shipping_payer_id | references | null: false, foreign_key: true |
-| shipping_from_id  | references | null: false, foreign_key: true |
-| shipping_dates_id | references | null: false, foreign_key: true |
+| user              | references | null: false, foreign_key: true |
+| name              | string     | null: false                    |
+| introduction      | text       | null: false                    |
+| category          | references | null: false, foreign_key: true |
+| condition         | references | null: false, foreign_key: true |
+| shipping_payer    | references | null: false, foreign_key: true |
+| shipping_from     | references | null: false, foreign_key: true |
+| shipping_dates    | references | null: false, foreign_key: true |
 | price             | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
-- belongs_to :image
 - belongs_to :order
+- belongs_to :address
+- has_many   :items
 - has_many   :comments
 
 ## images テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| item_id | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 | image   | text       | null: false                    |
 
 ### Association
 
 - belongs_to :item
 
-## orders テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
-| credit_card_id | references | null: false, foreign_key: true |
-| address_id     | references | null: false, foreign_key: true |
-| item_price     | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-- belongs_to :address
-- belongs_to :credit_card
-
-## credit_cards テーブル
-
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| card_num         | integer | null: false |
-| expiration_month | integer | null: false |
-| expiration_year  | integer | null: false |
-| security_num     | integer | null: false |
-
-### Association
-
-- belongs_to :order
-
 ## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | integer    | null: false                    |
-| prefecture_id | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false                    |
+| prefecture    | references | null: false, foreign_key: true |
 | city          | string     | null: false                    |
-| block_num     | integer    | null: false                    |
+| block_num     | string     | null: false                    |
 | building      | string     |                                |
-| phone_num     | integer    | null :false                    |
+| phone_num     | string     | null :false                    |
 
 ### Association
 
-- belongs_to :order
+- belongs_to :item
 
 ## comments テーブル
 
@@ -105,5 +74,5 @@
 | comment   | text       | null: false                    |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
