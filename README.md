@@ -66,16 +66,16 @@ _ belongs_to :order
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | integer    | null: false                    |
-| prefecture_id | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false                    |
+| prefecture    | references | null: false, foreign_key: true |
 | city          | string     | null: false                    |
-| block_num     | integer    | null: false                    |
+| block_num     | string     | null: false                    |
 | building      | string     |                                |
-| phone_num     | integer    | null :false                    |
+| phone_num     | string     | null :false                    |
 
 ### Association
 
-- belongs_to :order
+- belongs_to :item
 
 ## comments テーブル
 
