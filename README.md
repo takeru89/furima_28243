@@ -66,8 +66,9 @@ _ belongs_to :order
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
+| item          | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
-| prefecture    | references | null: false, foreign_key: true |
+| prefecture    | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block_num     | string     | null: false                    |
 | building      | string     |                                |
