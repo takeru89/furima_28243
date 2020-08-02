@@ -1,13 +1,10 @@
-window.addEventListener("load", function() {
+window.addEventListener('turbolinks:load', function() {
   const priceInput = document.getElementById("item-price");
   const addTaxPrice = document.getElementById("add-tax-price"); 
   const profit = document.getElementById("profit");
 
   const priceReg = /^([1-9]\d*|0)$/;
   const message = "半角数字のみ入力可能";
-  
-  addTaxPrice.innerHTML = message;
-  profit.innerHTML = message;
 
   priceInput.addEventListener("input", (function() {
     priceInt = priceInput.value;
