@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.name %>
     </h2>
     <div class='item-img-content'>
       <% @item.images.each do |img| %>
@@ -45,7 +45,7 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.introduction %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -106,7 +106,11 @@
     <% link_to "＜ 前の商品", "#", class:"change-item-btn" %>
     <% link_to "後ろの商品 ＞", "#", class:"change-item-btn" %>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <%= link_to "#" do%>
+    <span class='another-item'>
+      <%= @item.category.name %>をもっと見る 
+    </span>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>
