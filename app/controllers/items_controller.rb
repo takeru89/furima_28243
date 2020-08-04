@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = 'Delete Failed'
       render @item
+    end
   end
 
   private
