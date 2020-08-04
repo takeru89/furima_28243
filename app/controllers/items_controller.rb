@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
+      flash.now[:alert] = 'Delete Failed'
       render @item
   end
 
