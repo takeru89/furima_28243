@@ -1,4 +1,5 @@
 class DealingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item
 
   def index
@@ -9,7 +10,7 @@ class DealingsController < ApplicationController
     @dealing = AddressDealing.new(dealing_params[:item_id, :user_id, :postal_code, :prefecture_id, :city, :block_num, :building, :phone_num])
     if @dealing.valid?
       pay_item
-      @order.save
+      @dealing.save
       redirect_to root_path
     else
       render 'index'
@@ -31,7 +32,7 @@ class DealingsController < ApplicationController
   def pay_item
     Payjp.api_key = "sk_test_〇〇〇〇〇〇"  # 秘密鍵を設定
     Payjp::Charge.create(
-      amount: @item.price
+      amount: @item.price,
       card: dealing_params[:token],
       currency:'jpy'
     )
