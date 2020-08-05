@@ -1,11 +1,12 @@
 class DealingsController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  before_action :set_item
 
   def index
+    @dealing = AddressDealing.new
   end
 
   def create
-    @dealing = Dealing.new(item_id: @item.item_id, user_id: current_user.id)
+    @dealing = AddressDealing.new(dealing_params[:item_id, :user_id, :postal_code, :prefecture_id, :city, :block_num, :building, :phone_num])
     if @dealing.valid?
       pay_item
       @order.save
@@ -22,7 +23,9 @@ class DealingsController < ApplicationController
   end
 
   def dealing_params
-    params.permit(:token)
+    params.require(:address_dealing).permit(
+      :token, :postal_code, :prefecture_id, :city, :block_num, :building, :phone_num
+    ).merge(item_id: @item.item_id, user_id: current_user.id)
   end
 
   def pay_item
