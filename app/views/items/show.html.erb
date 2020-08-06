@@ -10,13 +10,11 @@
       <% @item.images.each do |img| %>
         <%= image_tag img ,class:"item-box-img" %>
 
-        <%# 購入機能実装の際、実行%>
-          <%# if @order.item_id.present? %>
-            <%# <div class='sold-out'> %>
-              <%# <span>Sold Out!!</span> %>
-            <%# </div> %>
-          <%# end %>
-        <%# //購入機能実装の際、実行%>
+          <% if @dealing.present? %>
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+          <% end %>
 
       <% end %>
     </div>
