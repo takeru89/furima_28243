@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @dealing = Dealing.where(user_id: @item.id)
+    @dealing = Dealing.find_by(item_id: @item.id)
   end
 
   def edit

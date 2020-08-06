@@ -1,6 +1,7 @@
 class DealingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
+  before_action :bye
 
   def index
     @dealing = AddressDealing.new
@@ -38,4 +39,9 @@ class DealingsController < ApplicationController
     )
   end
 
+  def bye
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
 end
