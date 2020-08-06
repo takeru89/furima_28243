@@ -29,15 +29,11 @@ class DealingsController < ApplicationController
     ).merge(item_id: @item.id, user_id: current_user.id)
   end
 
-  def token_params
-    params.permit(:token)
-  end
-
   def pay_item
-    Payjp.api_key = "sk_test_〇〇〇〇〇〇"  # 秘密鍵を設定
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
-      card: token_params[:token],
+      card: params[:token],
       currency:'jpy'
     )
   end
