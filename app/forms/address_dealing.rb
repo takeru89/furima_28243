@@ -12,7 +12,7 @@ class AddressDealing
   end
 
   def save
-    dealing = Dealing.create(item_id:　item_id, user_id:　user_id)
+    dealing = Dealing.create(item_id: item_id, user_id: user_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, block_num: block_num, building: building, phone_num: phone_num, dealing_id: dealing.id)
   end
 end
