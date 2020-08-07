@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :name, length: { maximum: 40 }
     validates :introduction, length: { maximum: 1000 }
 
-    with_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
       validates :category_id, :condition_id, :shipping_payer_id, :prefecture_id, :shipping_within_id
     end
 
