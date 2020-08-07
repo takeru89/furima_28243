@@ -133,7 +133,7 @@
               <div class='item-img-content'>
                 <%= image_tag item.images[0], class: "item-img" %>
 
-                <% if Dealing.find_by(item_id: item.id).present? %>
+                <% if sold_out(item) %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
