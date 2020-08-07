@@ -5,9 +5,9 @@ class AddressDealing
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Input numbers and include a hyphen(-)." }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank."}
+    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank."}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters."}
-    validates :block_num, format: { with: /\A[ぁ-んァ-ン一-龥0-9０-９]+\z/, message: "is invalid. Input Japanese characters and numbers."}
+    validates :block_num
     validates :phone_num, format: { with: /\A\d{10,11}\z/, message: "is invalid. Input 10 or 11 numbers with no hyphens(-)"}
   end
 
