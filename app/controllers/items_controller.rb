@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   helper_method :sold_out
 
   def index
-    @items = Item.includes(:user,:dealing).order('created_at DESC')
+    @items = Item.includes(:user, :dealing).order('created_at DESC')
   end
 
   def new

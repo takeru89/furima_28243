@@ -16,7 +16,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :orders
+- has_many :dealings
 
 ## items テーブル
 
@@ -34,8 +34,8 @@
 
 ### Association
 - belongs_to :user
-- has_one :address
-_ has_one :order
+- has_one    :address
+- has_one    :dealing
 - has_many   :images
 - has_many   :comments
 
@@ -50,7 +50,7 @@ _ has_one :order
 
 - belongs_to :item
 
-## orders テーブル
+## dealings テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -61,6 +61,7 @@ _ has_one :order
 
 - belongs_to :user
 - belongs_to :item
+- has_one    :address
 
 ## addresses テーブル
 
@@ -68,7 +69,7 @@ _ has_one :order
 | ------------- | ---------- | ------------------------------ |
 | item          | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block_num     | string     | null: false                    |
 | building      | string     |                                |
@@ -76,7 +77,7 @@ _ has_one :order
 
 ### Association
 
-- belongs_to :item
+- belongs_to :dealing
 
 ## comments テーブル
 
