@@ -31,6 +31,12 @@ RSpec.describe AddressDealing, type: :model do
           expect(@address_dealing.errors.full_messages).to include("Postal code is invalid. Input numbers and include a hyphen(-).")
         end
 
+        it 'prefectureが空では保存できないこと' do
+          @address_dealing.prefecture_id = nil
+          @address_dealing.valid?
+          expect(@address_dealing.errors.full_messages).to include("Prefecture can't be blank.")
+        end
+
         it 'prefectureを選択していないと保存できないこと' do
           @address_dealing.prefecture_id = 1
           @address_dealing.valid?
@@ -74,6 +80,15 @@ RSpec.describe AddressDealing, type: :model do
           @address_dealing.phone_num = "090-1234-5678"
           @address_dealing.valid?
           expect(@address_dealing.errors.full_messages).to include("Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)")
+        end
+
+        it 'phone_numが、10桁か11桁でなければ保存できないこと' do
+          tel = ["090123456", "090123456789"]
+          tel.each do |t|
+            @address_dealing.phone_num = t
+            @address_dealing.valid?
+            expect(@address_dealing.errors.full_messages).to include("Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)")
+          end
         end
       end
     end
