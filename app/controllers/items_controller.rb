@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  helper_method :sold_out
 
   def index
     @items = Item.includes(:user,:dealing).order('created_at DESC')
@@ -51,5 +52,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def sold_out(id)
+    Dealing.find_by(item_id: id).present?
   end
 end
