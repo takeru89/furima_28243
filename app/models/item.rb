@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping_within
   has_many_attached :images
+  has_one :dealing
 
   with_options presence: true do
     validates :images
