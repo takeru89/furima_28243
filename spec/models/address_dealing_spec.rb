@@ -26,9 +26,9 @@ RSpec.describe AddressDealing, type: :model do
         end
 
         it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-          @address_dealing.postal_code = "1234567"
+          @address_dealing.postal_code = '1234567'
           @address_dealing.valid?
-          expect(@address_dealing.errors.full_messages).to include("Postal code is invalid. Input numbers and include a hyphen(-).")
+          expect(@address_dealing.errors.full_messages).to include('Postal code is invalid. Input numbers and include a hyphen(-).')
         end
 
         it 'prefectureが空では保存できないこと' do
@@ -50,11 +50,11 @@ RSpec.describe AddressDealing, type: :model do
         end
 
         it 'cityが全角日本語でないと保存できないこと' do
-          city = ["Tokyo", "123", "１２３"]
+          city = %w[Tokyo 123 １２３]
           city.each do |c|
             @address_dealing.city = c
             @address_dealing.valid?
-            expect(@address_dealing.errors.full_messages).to include("City is invalid. Input full-width characters.")
+            expect(@address_dealing.errors.full_messages).to include('City is invalid. Input full-width characters.')
           end
         end
 
@@ -71,23 +71,23 @@ RSpec.describe AddressDealing, type: :model do
         end
 
         it 'phone_numが半角数字でないと保存できないこと' do
-          @address_dealing.phone_num = "０９０１２３４５６７８"
+          @address_dealing.phone_num = '０９０１２３４５６７８'
           @address_dealing.valid?
-          expect(@address_dealing.errors.full_messages).to include("Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)")
+          expect(@address_dealing.errors.full_messages).to include('Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)')
         end
 
         it 'phone_numにハイフンがあると保存できないこと' do
-          @address_dealing.phone_num = "090-1234-5678"
+          @address_dealing.phone_num = '090-1234-5678'
           @address_dealing.valid?
-          expect(@address_dealing.errors.full_messages).to include("Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)")
+          expect(@address_dealing.errors.full_messages).to include('Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)')
         end
 
         it 'phone_numが、10桁か11桁でなければ保存できないこと' do
-          tel = ["090123456", "090123456789"]
+          tel = %w[090123456 090123456789]
           tel.each do |t|
             @address_dealing.phone_num = t
             @address_dealing.valid?
-            expect(@address_dealing.errors.full_messages).to include("Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)")
+            expect(@address_dealing.errors.full_messages).to include('Phone num is invalid. Input 10 or 11 numbers with no hyphens(-)')
           end
         end
       end
